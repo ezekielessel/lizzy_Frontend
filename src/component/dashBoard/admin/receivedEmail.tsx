@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify"; // Import toast
 
-const baseURL = "http://localhost:3000";
+const baseURL = "https://lizzy-backend.onrender.com";
 
 const api = axios.create({
   baseURL,

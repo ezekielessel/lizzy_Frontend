@@ -8,7 +8,7 @@ interface PdfCardData {
   pdfData: string; // Change the type to Uint8Array
 }
 
-const baseURL = "http://localhost:3000";
+const baseURL = "https://lizzy-backend.onrender.com";
 
 const api = axios.create({
   baseURL,

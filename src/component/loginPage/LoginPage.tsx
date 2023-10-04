@@ -6,7 +6,7 @@ import { toast } from "react-toastify"; // Import toast
 import backgroundImage from "../../assets/background.jpg";
 
 
-const baseURL = "http://localhost:3000";
+const baseURL = "https://lizzy-backend.onrender.com";
 
 const api = axios.create({
   baseURL,
