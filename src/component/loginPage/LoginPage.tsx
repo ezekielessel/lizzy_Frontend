@@ -1,5 +1,4 @@
 import { useState } from "react";
-/*import logo from "../../../public/vite.svg";*/
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios"; // Import Axios
 import { toast } from "react-toastify"; // Import toast

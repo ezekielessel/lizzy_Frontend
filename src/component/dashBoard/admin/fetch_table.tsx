@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { toast } from "react-toastify"; // Import toast
+import { toast } from "react-toastify";
 
 const baseURL = "https://lizzy-backend.onrender.com";
+//const baseURL = "http://localhost:3000";
 
 const api = axios.create({
   baseURL,
@@ -12,7 +13,8 @@ interface PdfData {
   id: number;
   text: string;
   text_description: string;
-  pdfData: Uint8Array; // Uint8Array for binary data
+  pdfData: string;
+  downloads: number;
 }
 
 const FetchData: React.FC = () => {
@@ -24,7 +26,7 @@ const FetchData: React.FC = () => {
 
   async function fetchData() {
     try {
-      const response = await api.get<PdfData[]>("/auth/fetch_data"); // Adjust the route URL as needed
+      const response = await api.get<PdfData[]>("/auth/fetch_data");
       setTableData(response.data);
 
       console.log(response.data);
@@ -42,12 +44,18 @@ const FetchData: React.FC = () => {
       if (confirm) {
         await api.delete(`/auth/delete_data/${id}`);
         setTableData((prevData) => prevData.filter((item) => item.id !== id));
-        toast.success("Item deleted successfully!", { position: "top-center",autoClose: 1000, hideProgressBar:true});
+        toast.success("Item deleted successfully!", {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: true,
+        });
       }
     } catch (error) {
       console.error("Error deleting data:", error);
     }
   }
+
+
   return (
     <div>
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -56,6 +64,7 @@ const FetchData: React.FC = () => {
             <th className="px-4 py-2">Number</th>
             <th className="px-4 py-2">Text</th>
             <th className="px-4 py-2">Text Description</th>
+            <th className="px-4 py-2">Downloads</th>
             <th className="px-4 py-2">Action</th>
           </tr>
         </thead>
@@ -63,14 +72,16 @@ const FetchData: React.FC = () => {
           {tableData.map((row, index) => (
             <tr key={index}>
               <td className="px-4 py-2">{index + 1}</td>
-
               <td className="px-4 py-2">{row.text}</td>
               <td>{row.text_description}</td>
+              <td className="px-4 py-2">{row.downloads}</td>
 
               <td className="px-4 py-2">
                 <button
                   className="text-blue-600 hover:text-blue-700"
-                  onClick={() => handleDelete(row.id)}
+                  onClick={() => {
+                    handleDelete(row.id);
+                  }}
                 >
                   Delete
                 </button>

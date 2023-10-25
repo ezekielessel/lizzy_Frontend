@@ -1,4 +1,4 @@
-/* import { Link } from "react-router-dom"; */
+
 import React, { useEffect, useState } from "react";
 import logo from "../../../assets/logo.png";
 import profile from "../../../assets/3135715.png";
@@ -96,9 +96,9 @@ const DashBoard: React.FC = () => {
                     <li>
                       <a
                         key={index}
-                        className={`flex items-center gap-3 p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 ${
+                        className={`flex items-center gap-3 p-2 text-gray-900 rounded-lg dark:text-white ${
                           selectedItem === item.text
-                            ? "text-white bg-blue-700 hover:bg-gray-900  font-semibold"
+                            ? "text-white bg-blue-700   font-semibold"
                             : ""
                         }`}
                         onClick={() => handleSidebarItemClick(item.text)}
