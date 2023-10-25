@@ -96,11 +96,7 @@ const DashBoard: React.FC = () => {
                     <li>
                       <a
                         key={index}
-<<<<<<< HEAD
                         className={`flex items-center gap-3 p-2 text-gray-900 rounded-lg dark:text-white ${
-=======
-                        className={`flex items-center gap-3 p-2 text-gray-900 rounded-lg dark:text-white  ${
->>>>>>> 4a032db56682aa0497c84073c584e9c290af00fb
                           selectedItem === item.text
                             ? "text-white bg-blue-700   font-semibold"
                             : ""
